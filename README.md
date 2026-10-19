@@ -1,12 +1,40 @@
 # sEMG Gesture Classification Using Machine Learning
 
-## Overview
+**A machine learning approach for classifying muscle activity gestures using surface electromyography (sEMG) signals.**
 
-This project implements a machine learning pipeline for classifying muscle activity gestures using surface electromyography (sEMG) data.
+## 1. Problem Statement
 
-The pipeline processes sEMG signals, extracts time-domain features, and uses a Multi-Layer Perceptron (MLP) classifier to predict gesture classes.
+Surface electromyography (sEMG) signals capture the electrical activity produced by skeletal muscles. These signals can be used to study muscle activity and distinguish between different gestures. However, raw sEMG signals contain variations and require suitable preprocessing and feature extraction before they can be used effectively for machine learning.
 
-## Technologies Used
+This project addresses the problem of classifying muscle activity gestures from sEMG data by developing a software-based machine learning pipeline that extracts meaningful signal features and uses them to predict gesture classes.
+
+## 2. Project Objectives
+
+- Process and prepare sEMG data for machine learning.
+- Extract meaningful time-domain features from segmented signal windows.
+- Apply feature scaling to prepare the extracted data for classification.
+- Develop an MLP-based classifier for gesture prediction.
+- Evaluate model performance using training metrics and a confusion matrix.
+- Save the trained model and supporting files for future use.
+
+## 3. Methodology
+
+The project follows these main stages:
+
+1. **Data preparation:** Load and organize the sEMG dataset.
+2. **Signal segmentation:** Divide the signals into smaller windows for analysis.
+3. **Feature extraction:** Calculate five time-domain features:
+   - Mean Absolute Value (MAV)
+   - Root Mean Square (RMS)
+   - Variance (VAR)
+   - Waveform Length (WL)
+   - Zero Crossings (ZC)
+4. **Feature scaling:** Standardize the extracted features using a fitted scaler.
+5. **Model development:** Train a Multi-Layer Perceptron (MLP) classifier to distinguish gesture classes.
+6. **Performance evaluation:** Examine training metrics and classification results using visualizations.
+7. **Model saving:** Store the trained classifier, feature scaler, and class labels.
+
+## 4. Technologies Used
 
 - Python
 - Google Colab
@@ -14,37 +42,47 @@ The pipeline processes sEMG signals, extracts time-domain features, and uses a M
 - Pandas
 - Scikit-learn
 - Matplotlib
+- Machine Learning
+- Signal Feature Extraction
 
-## Project Workflow
+## 5. Results and Visualizations
 
-1. Load and prepare the sEMG dataset.
-2. Divide signals into windows.
-3. Extract time-domain features: Mean Absolute Value (MAV), Root Mean Square (RMS), Variance (VAR), Waveform Length (WL), and Zero Crossings (ZC).
-4. Scale the extracted features.
-5. Train a Multi-Layer Perceptron (MLP) classifier.
-6. Evaluate the model and visualize the results.
+### Training Accuracy and Loss
 
-## Project Files
+The training accuracy and loss plots help visualize how the model learns from the training data over successive iterations.
 
-- `semg_ml_pipeline.ipynb` – ML pipeline and notebook.
-- `mlp_model.pkl` – Saved trained MLP model.
-- `feature_scaler.pkl` – Saved feature scaler.
-- `class_labels.npy` – Saved class labels.
-- `training_metrics.csv` – Training and evaluation metrics.
-- `confusion_matrix_data.csv` – Confusion matrix data.
-- `prediction_timeline.csv` – Prediction timeline data.
-- `images/` – Result visualizations.
+![Training Accuracy and Loss](images/training_accuracy_loss.png)
 
-## How to Run
+### Confusion Matrix
 
-Open `semg_ml_pipeline.ipynb` in Google Colab and run the notebook after obtaining the dataset required by the notebook.
+The confusion matrix provides a class-by-class view of the model's predictions, helping identify correctly classified samples and misclassifications.
 
-The dataset is not included in this repository. Obtain it from the appropriate original source and follow its usage and licensing terms.
+![Confusion Matrix](images/confusion_matrix.png)
 
-## Scope
+*The figures represent model evaluation outputs from this project. Actual performance should be interpreted using the corresponding metrics and evaluation setup.*
 
-This is a software-based machine learning project for sEMG gesture classification. Its predictions are experimental and are not intended for medical diagnosis.
+## 6. Repository Contents
+
+| File or Folder | Description |
+|---|---|
+| `semg_ml_pipeline.ipynb` | Notebook containing the machine learning workflow |
+| `mlp_model.pkl` | Saved trained MLP classifier |
+| `feature_scaler.pkl` | Saved feature-scaling object |
+| `class_labels.npy` | Saved gesture class labels |
+| `training_metrics.csv` | Training and evaluation metrics |
+| `confusion_matrix_data.csv` | Confusion matrix values |
+| `prediction_timeline.csv` | Prediction timeline data |
+| `images/` | Model evaluation visualizations |
+| `README.md` | Project documentation |
+
+## 7. Project Outcome
+
+This project demonstrates how signal feature extraction and supervised machine learning can be combined to classify muscle activity gestures from sEMG data. It brings together data preparation, feature engineering, model training, evaluation, visualization, and model persistence in a single software-based workflow.
+
+## 8. Scope and Limitations
+
+This project focuses on experimental sEMG gesture classification. Its predictions depend on the dataset, signal quality, feature extraction process, and model performance. The system is not a clinically validated diagnostic tool and is not intended to diagnose medical conditions.
 
 ## Author
 
-Jenolin Joy
+**Jenolin Joy**
